@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Data
@@ -25,15 +27,19 @@ public class Schedule implements Serializable {
     @GeneratedValue(strategy= IDENTITY )
     private Long id;
 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(name="created_at")
 	private Date createdAt;
 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(name="updated_at")
 	private Date updatedAt;
 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(name="due_date")
 	private Date dueDate;
 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(name="resolved_at")
 	private Date resolvedAt;
 

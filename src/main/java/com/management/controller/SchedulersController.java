@@ -3,8 +3,10 @@ package com.management.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +20,7 @@ public class SchedulersController {
 
 	@Autowired
 	private ScheduleService service;
-	
+
 	@RequestMapping("")
     public List<Schedule> list() {
         return service.list();
@@ -28,9 +30,20 @@ public class SchedulersController {
     public Schedule find(@PathVariable("id") Long id) {
         return service.find(id);
     }
-	
+
 	@PostMapping("")
-	public void create(@RequestBody Schedule schedule) {
-		service.save(schedule);
+	public Schedule create(@RequestBody Schedule schedule) {
+		return service.save(schedule);
+	}
+
+	@PutMapping("/{id}")
+    public Schedule update(@PathVariable("id") Long id, @RequestBody Schedule schedule) {
+        //return service.update(id);
+		return null;
+    }
+
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable("id") Long id) {
+		service.delete(id);
 	}
 }

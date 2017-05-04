@@ -1,5 +1,6 @@
 package com.management.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,19 @@ public class ScheduleService {
 	public List<Schedule> list() {
 		return scheduleRepository.findAll();
 	}
-	
+
 	public Schedule save(Schedule schedule) {
+		schedule.setCreatedAt(new Date());
+		schedule.setUpdatedAt(new Date());
 		return scheduleRepository.save(schedule);
+	}
+
+	public void update(Schedule schedule) {
+		schedule.setUpdatedAt(new Date());
+		scheduleRepository.saveAndFlush(schedule);
+	}
+
+	public void delete(Long id) {
+		scheduleRepository.delete(id);
 	}
 }
