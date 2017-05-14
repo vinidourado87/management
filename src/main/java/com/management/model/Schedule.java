@@ -55,4 +55,10 @@ public class Schedule implements Serializable {
 	@Column(name="status")
 	private String status;
 
+	@Column(name="contact")
+	private String contact;
+
+	@Column(name="place")
+	private String place;
+
 }
