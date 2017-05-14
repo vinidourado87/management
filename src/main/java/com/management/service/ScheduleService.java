@@ -26,7 +26,9 @@ public class ScheduleService {
 	public Schedule save(Schedule schedule) {
 		schedule.setCreatedAt(new Date());
 		schedule.setUpdatedAt(new Date());
-		return scheduleRepository.save(schedule);
+		Schedule scheduleSaved = scheduleRepository.save(schedule);
+		scheduleRepository.flush();
+		return scheduleSaved;
 	}
 
 	public void update(Schedule schedule) {
